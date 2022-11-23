@@ -1,16 +1,16 @@
 [
     {
-        "id": 1,
+        "_id": 1,
         "categoryName": "HP",
         "img": "https://unu.ai/wp-content/uploads/2021/09/beste-hp-laptop.jpg"
     },
     {
-        "id": 1,
+        "_id": 1,
         "categoryName": "DELL",
         "img": "https://cdn.mos.cms.futurecdn.net/Sau6W3hnWTyGiNr3MsrTHf.jpg"
     },
     {
-        "id": 1,
+        "_id": 1,
         "categoryName": "ACER",
         "img": "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWNlciUyMGxhcHRvcHxlbnwwfHwwfHw%3D&w=1000&q=80"
     }
