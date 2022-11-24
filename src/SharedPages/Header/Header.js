@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaLaptop } from "react-icons/fa";
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
-    // const {user, logOut} = useContext(AuthContext)
+    const {user, logOut} = useContext(AuthContext)
     const [navbar, setNavbar] = useState(false);
-    // const handleLogOut = () => {
-    //     logOut()
-    //     .then(() => {
-    //       }).catch((error) => {
-    //       });
-    // }
+    const handleLogOut = () => {
+        logOut()
+        .then(() => {
+          }).catch((error) => {
+          });
+    }
     return (
         <nav className="w-full bg-gray-900 shadow-lg">
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
@@ -73,9 +74,16 @@ const Header = () => {
                         <li className="text-green-300 hover:bg-green-400 hover:text-black rounded-lg p-3 font-semibold">
                             <Link to='/blog'>Blog</Link>
                         </li>
-                        <li className="">
+                        {
+                            user ? 
+                            <li className="">
+                            <button onClick={handleLogOut} className="btn bg-green-400 hover:bg-green-500 text-black">Log Out</button>
+                            </li>
+                            :
+                            <li className="">
                             <Link to='/login'><button className="btn bg-green-400 hover:bg-green-500 text-black">Log in</button></Link>
                         </li>
+                        }
                     </ul>
                 </div>
             </div>

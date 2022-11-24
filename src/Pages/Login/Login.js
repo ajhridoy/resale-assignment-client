@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
+    const {loginUser, loginWithGoogle} = useContext(AuthContext)
+    const [error, setError] = useState('')
     const handleLogin = event => {
         event.preventDefault()
+        setError('')
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        loginUser(email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user)
+            toast.success('LogIn Successfully')
+            form.reset()
+          })
+          .catch((error) => {
+            setError(error.message);
+          });
+    }
+
+    const handleGooglelogin = () => {
+        loginWithGoogle()
+        .then((result) => {
+            const user = result.user;
+            console.log(user)
+          }).catch((error) => {
+            // Handle Errors here.
+             setError(error.message);
+          });
     }
   return (
     <div className="w-full my-10 mx-auto max-w-sm p-4 md:max-w-md rounded-md shadow sm:p-8 bg-gray-900 text-gray-100">
@@ -16,6 +41,7 @@ const Login = () => {
       </h2>
       <div className="my-6 space-y-4">
         <button
+          onClick={handleGooglelogin}
           aria-label="Login with Google"
           type="button"
           className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 border-gray-400 focus:ring-violet-400"
@@ -79,6 +105,7 @@ const Login = () => {
           value="Log In"
         />
       </form>
+      <p className="text-red-500">{error}</p>
       <p className="text-sm text-center text-gray-400 mt-5">
         Don't have account?
         <Link

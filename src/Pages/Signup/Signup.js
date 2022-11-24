@@ -4,11 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Signup = () => {
-  const {createUser} = useContext(AuthContext)
+  const {createUser, updateUserProfile} = useContext(AuthContext)
   const [error, setError] = useState('')
   const navigate = useNavigate()
   const handleSignup = event => {
     event.preventDefault();
+    setError('')
     const form = event.target;
     const name = form.name.value;
     const role = form.select.value;
@@ -21,6 +22,12 @@ const Signup = () => {
       const user = userCredential.user;
       console.log(user)
       toast.success('User Sign Up Successfully')
+      updateUserProfile(name)
+      .then(() => {
+        // Profile updated!
+      }).catch((error) => {
+
+      })
       form.reset()
       navigate('/')
     })
