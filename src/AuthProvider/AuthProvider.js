@@ -6,39 +6,47 @@ export const AuthContext = createContext()
 const auth = getAuth(app)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
+    const [loading, isLoading] = useState(true)
 
     const googleProvider = new GoogleAuthProvider();
 
     const createUser = (email, password) => {
+        isLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const updateUserProfile = (name) => {
+        isLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name})
     }
 
     const loginUser = (email, password) => {
+        isLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            isLoading(false)
         })
         return () => unsubscribe()
     }, [])
 
     const loginWithGoogle = () => {
+        isLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
 
     const logOut = () => {
+        isLoading(true)
         return signOut(auth)
     }
 
     const authInfo = {
         user,
+        loading,
         createUser,
         updateUserProfile,
         loginUser,
