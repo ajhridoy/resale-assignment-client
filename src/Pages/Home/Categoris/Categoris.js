@@ -5,7 +5,7 @@ import Category from './Category';
 const Categoris = () => {
     const {data: categories = []} = useQuery({
         queryKey: ['category'],
-        queryFn: () => fetch('category.json')
+        queryFn: () => fetch('http://localhost:5000/categories')
         .then(res => res.json())
     })
     return (

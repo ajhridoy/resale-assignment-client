@@ -1,0 +1,74 @@
+[
+    {
+        "name": "3 years used HP laptop",
+        "img": "https://i2.wp.com/thetechstall.com/wp-content/uploads/2020/03/HP-ELITEBOOK-840-G2-CORE-i5.jpg?resize=800%2C600&ssl=1",
+        "categoryName": "hp",
+        "location": "Rajshahi",
+        "resalePrice": 200,
+        "originalPrice": 400,
+        "postTime": "6:37",
+        "sellerName": "Aj Hridoy",
+        "condition": "Excellent",
+        "decs": "This is a very good quality laptop i used it 2 years. This laptop have no major problem. If u are interested to buy thin i sent you a document of this laptop."
+    },
+    {
+        "name": "6 month used HP laptop",
+        "img": "https://gudlaptop.com/images/thumbs/0009026_hp-elitebook-830-g5-4td82pa-backligh-kb-finger-print-touch-screen-14-inch-laptop-8th-gen-core-i5-8gb_440.png",
+        "categoryName": "hp",
+        "location": "Dhaka",
+        "resalePrice": 400,
+        "originalPrice": 730,
+        "postTime": "6:37",
+        "sellerName": "Emon",
+        "condition": "Excellent",
+        "decs": "Last 6 month ago i brought this laptop but now i have problem for money thats why i sell this laptop. This laptop have original condition and a warenty date"
+    },
+    {
+        "name": "Dell Laptop",
+        "img": "https://img2.exportersindia.com/product_images/bc-full/2021/8/7260616/second-hand-dell-laptop-1628593003-5935486.jpeg",
+        "categoryName": "dell",
+        "location": "Khulna",
+        "resalePrice": 350,
+        "originalPrice": 450,
+        "postTime": "6:37",
+        "sellerName": "Anunna",
+        "condition": "Good",
+        "decs": "This Dell laptop i brought 2 years ago this laptop condition was very good."
+    },
+    {
+        "name": "Dell Mini",
+        "img": "http://second-hand.in/img/slides/used-laptop.jpg",
+        "categoryName": "dell",
+        "location": "Borguna",
+        "resalePrice": 200,
+        "originalPrice": 400,
+        "postTime": "6:37",
+        "sellerName": "Ajmain",
+        "condition": "Excellent",
+        "decs": "This is a Dell mini version. i used it just 1 year and this laptop have no issue if u buy this"
+    },
+    {
+        "name": "Acer D-3987",
+        "img": "https://5.imimg.com/data5/SELLER/Default/2021/3/YP/NY/XO/26281543/acer-second-hand-laptop-500x500.jpg",
+        "categoryName": "acer",
+        "location": "Cumilla",
+        "resalePrice": 150,
+        "originalPrice": 400,
+        "postTime": "6:37",
+        "sellerName": "Suborno",
+        "condition": "Fair",
+        "decs": "This laptop i used last 5 years last month i bought my new apple laptop so i want toi sell it. this laptop have two issue but i solve it and you definitely buy it."
+    },
+    {
+        "name": "Acer A-39Cf45",
+        "img": "https://i.pinimg.com/originals/24/1d/a5/241da5f1367d12e04c90f1c4b79c4986.jpg",
+        "categoryName": "acer",
+        "location": "Gazipur",
+        "resalePrice": 300,
+        "originalPrice": 500,
+        "postTime": "6:37",
+        "sellerName": "Rony",
+        "condition": "Good",
+        "decs": "This is a ver good quality laptop i used it 3 years. This laptop have no major problem. If u are interested to buy thin i sent you a document of this laptop."
+    }
+]
