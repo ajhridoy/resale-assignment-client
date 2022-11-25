@@ -6,7 +6,7 @@ const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-  const { data: orders = [] } = useQuery({
+  const { data: orders = [], refetch } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: () => fetch(url, {
         headers: {
@@ -15,6 +15,7 @@ const Dashboard = () => {
     })
     .then((res) => res.json()),
   });
+  refetch()
   return (
     <div>
       <h2 className="text-3xl font-bold my-10">My Orders</h2>
