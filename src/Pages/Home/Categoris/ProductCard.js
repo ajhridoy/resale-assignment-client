@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductCard = ({product}) => {
+const ProductCard = ({product, setBookingBrand}) => {
     const {condition, decs, img, location, name, originalPrice, postTime, resalePrice, sellerName} = product
     return (
         <div className="card lg:card-side bg-base-200 shadow-xl mx-8 md:mx-20 my-10">
@@ -17,7 +17,7 @@ const ProductCard = ({product}) => {
     <p className='font-medium'>Laptop Condition: <span className='text-green-700 font-bold'>{condition}</span></p>
     <p className='font-medium'>Seller Name: <span className='text-xl font-bold'>{sellerName}</span></p>
     <div className="card-actions justify-end">
-      <button className="btn bg-green-400 hover:bg-green-500 text-black">Book Now</button>
+      <label onClick={() => setBookingBrand(product)} htmlFor="booking-modal" className="btn bg-green-400 hover:bg-green-500 text-black">Book Now</label>
     </div>
   </div>
 </div>

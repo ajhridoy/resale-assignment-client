@@ -17,12 +17,33 @@ const Header = () => {
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
             <div>
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
+                <label
+            htmlFor="dashboard-drawer"
+            className="btn drawer-button lg:hidden"
+            title='Click for Dashboard Menu'
+          >
+           <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-6 h-6 text-green-300"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                </svg>
+          </label>
                     <Link to='/'>
                         <h2 className="text-2xl font-bold flex flex-col md:flex-row items-center"><span className='text-green-400 text-4xl'><FaLaptop></FaLaptop></span><span className='ml-2 text-green-400 uppercase'>Laptop-Zone</span></h2>
                     </Link>
                     <div className="md:hidden">
                         <button
                             className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                            title='Click for Nav Menu'
                             onClick={() => setNavbar(!navbar)}
                         >
                             {navbar ? (
@@ -65,15 +86,11 @@ const Header = () => {
                     }`}
                 >
                     <ul className="items-center justify-center text-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                        <li className="text-green-300 hover:bg-green-400 hover:text-black rounded-lg p-3 font-semibold">
-                            <Link to='/'>Home</Link>
-                        </li>
-                        <li className="text-green-300 hover:bg-green-400 hover:text-black rounded-lg p-3 font-semibold">
-                            <Link to='/dashboard'>Dashboard</Link>
-                        </li> 
-                        <li className="text-green-300 hover:bg-green-400 hover:text-black rounded-lg p-3 font-semibold">
-                            <Link to='/blog'>Blog</Link>
-                        </li>
+                    <Link to='/'><li className="text-green-300 hover:bg-green-400 hover:text-black rounded-lg p-3 font-semibold">Home</li></Link>
+
+                    <Link to='/dashboard'><li className="text-green-300 hover:bg-green-400 hover:text-black rounded-lg p-3 font-semibold">Dashboard</li></Link>
+                        
+                    <Link to='/blog'><li className="text-green-300 hover:bg-green-400 hover:text-black rounded-lg p-3 font-semibold">Blog</li></Link>         
                         {
                             user ? 
                             <li className="">

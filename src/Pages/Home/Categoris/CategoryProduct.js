@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from '../BookingModal/BookingModal';
 import ProductCard from './ProductCard';
 
 const CategoryProduct = () => {
     const category = useLoaderData()
+    const [bookingBrand, setBookingBrand] = useState(null)
     const {data: products = []} = useQuery({
         queryKey: ['products', category.categoryName],
         queryFn: () => fetch(`http://localhost:5000/products?categoryName=${category.categoryName}`)
@@ -18,7 +20,14 @@ const CategoryProduct = () => {
                 products.map(product => <ProductCard
                     key={product._id}
                     product={product}
+                    setBookingBrand={setBookingBrand}
                 ></ProductCard>)
+            }
+            {
+                bookingBrand && <BookingModal
+                bookingBrand={bookingBrand}
+                setBookingBrand={setBookingBrand}
+                ></BookingModal>
             }
         </div>
     );
