@@ -2,11 +2,19 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 const Signup = () => {
   const {createUser, updateUserProfile} = useContext(AuthContext)
   const [error, setError] = useState('')
+  const [createUserEmail, setCreateUserEmail] = useState('')
+  const [token] = useToken(createUserEmail);
   const navigate = useNavigate()
+  
+  if(token){
+    navigate('/')
+  }
+
   const handleSignup = event => {
     event.preventDefault();
     setError('')
@@ -15,7 +23,6 @@ const Signup = () => {
     const role = form.select.value;
     const email = form.email.value;
     const password = form.password.value;
-    const user = {name, role, email, password}
 
     createUser(email, password)
     .then((userCredential) => {
@@ -24,16 +31,30 @@ const Signup = () => {
       toast.success('User Sign Up Successfully')
       updateUserProfile(name)
       .then(() => {
-        // Profile updated!
+        savedUserDb(name, email, role)
       }).catch((error) => {
 
       })
       form.reset()
-      navigate('/')
     })
     .catch((error) => {
        setError(error.message)
     });
+  }
+
+  const savedUserDb = (name, email, role) => {
+    const user = {name, email, role}
+    fetch('http://localhost:5000/users', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data => {
+      setCreateUserEmail(email)
+    })
   }
     return (
         <div className="w-full my-10 mx-auto max-w-sm p-4 md:max-w-md rounded-md shadow sm:p-8 bg-gray-900 text-gray-100">

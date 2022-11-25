@@ -8,7 +8,12 @@ const Dashboard = () => {
 
   const { data: orders = [] } = useQuery({
     queryKey: ["bookings", user?.email],
-    queryFn: () => fetch(url).then((res) => res.json()),
+    queryFn: () => fetch(url, {
+        headers: {
+            authorization: `bearer ${localStorage.getItem('resaleToken')}`
+        }
+    })
+    .then((res) => res.json()),
   });
   return (
     <div>
