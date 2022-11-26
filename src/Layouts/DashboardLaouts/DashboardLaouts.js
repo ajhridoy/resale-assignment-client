@@ -41,7 +41,7 @@ const DashboardLaouts = () => {
             {
                 isSeller && <>
                 <li>
-              <Link>My Products</Link>
+              <Link to='/dashboard/myproducts'>My Products</Link>
             </li>
                 <li>
               <Link to='/dashboard/addProduct'>Add Product</Link>

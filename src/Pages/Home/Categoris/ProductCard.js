@@ -2,6 +2,7 @@ import React from 'react';
 
 const ProductCard = ({product, setBookingBrand}) => {
     const {condition, decs, img, location, name, originalPrice, postTime, resalePrice, sellerName} = product
+    // const realTime = parseFloat(postTime)
     return (
         <div className="card lg:card-side bg-base-200 shadow-xl mx-8 md:mx-20 my-10">
   <figure className='lg:w-2/5'><img className='w-full md:h-96' src={img} alt="Album"/></figure>

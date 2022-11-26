@@ -4,7 +4,8 @@ import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const BookingModal = ({bookingBrand, setBookingBrand}) => {
     const {user} = useContext(AuthContext)
-    const {name, resalePrice, img} = bookingBrand
+    const {name, resalePrice, img, postTime} = bookingBrand
+    console.log(postTime)
 
     const handleModal = event => {
         event.preventDefault()

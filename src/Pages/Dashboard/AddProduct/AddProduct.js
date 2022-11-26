@@ -33,7 +33,7 @@ const AddProduct = () => {
         const desc = form.desc.value
         const condition = form.condition.value
         const getTime = new Date()
-        const time = getTime.getHours() + ":" + getTime.getMinutes() + ":" + getTime.getSeconds();
+        const time = `${getTime.getHours()}:${getTime.getMinutes()}`;
 
         const productDetails = {
             name,
@@ -44,7 +44,7 @@ const AddProduct = () => {
             originalPrice,
             PostTime: time,
             sellerName: user.displayName,
-            sellerEmail: user.email,
+            email: user.email,
             condition,
             decs: desc
         }
