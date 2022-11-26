@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const MyProducts = () => {
@@ -9,6 +10,26 @@ const MyProducts = () => {
         queryFn: () => fetch(`http://localhost:5000/products/email?email=${user?.email}`)
         .then(res => res.json())
     })
+
+    const handleAddvertise = product => {
+        fetch(`http://localhost:5000/products/${product._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount > 0){
+                toast.success('Your product now display on Home')
+            }
+        })
+    }
+
+    const handleDelete = id => {
+        
+    }
     return (
         <div>
             <h2 className='text-3xl font-bold my-8 ml-5'>My Products</h2>    
@@ -39,10 +60,10 @@ const MyProducts = () => {
                 <td>${product.resalePrice}</td>
                 <td>
                     <p className='font-bold'>Avaliable</p>
-                    <button className="btn btn-sm bg-green-400 hover:bg-green-500 text-black">Advertise</button>
+                    <button onClick={() => handleAddvertise(product)} className="btn btn-sm bg-green-400 hover:bg-green-500 text-black">Advertise</button>
                 </td>
                 <td>
-                <button className="btn btn-sm bg-red-400 hover:bg-red-500 text-black mr-2">Delete</button>
+                <button onClick={handleDelete} className="btn btn-sm bg-red-400 hover:bg-red-500 text-black mr-2">Delete</button>
                 </td>
               </tr>
             ))}

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 
@@ -8,6 +9,7 @@ const AddProduct = () => {
     const {user} = useContext(AuthContext)
     const imgHostkey = process.env.REACT_APP_IMG_BB_KEY
     const [image, setImage] = useState('')
+    const navigate = useNavigate()
     const handleProductAdd = event => {
         event.preventDefault()
         const form = event.target;
@@ -60,6 +62,7 @@ const AddProduct = () => {
         .then(data => {
             if(data.acknowledged){
                 toast.success('Added your product successfully')
+                navigate('/dashboard/myproducts')
                 form.reset()
             }
         })
