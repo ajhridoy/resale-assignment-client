@@ -32,13 +32,19 @@ const DashboardLaouts = () => {
             <li>
               <Link>All sellers</Link>
             </li>
+            <li>
+              <Link>Reported Items</Link>
+            </li>
                 </>
             }
 
             {
                 isSeller && <>
-                    <li>
+                <li>
               <Link>My Products</Link>
+            </li>
+                <li>
+              <Link to='/dashboard/addProduct'>Add Product</Link>
             </li>
                 </>
             }

@@ -8,7 +8,7 @@ const SellerRoute = ({children}) => {
     const [isSeller, sellerLoading] = useSeller(user?.email)
     const location = useLocation()
 
-    if(loading && sellerLoading){
+    if(loading || sellerLoading){
         return <div>Loading...</div>
     }
 
