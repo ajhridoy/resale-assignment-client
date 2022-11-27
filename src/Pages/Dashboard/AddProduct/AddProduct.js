@@ -63,7 +63,6 @@ const AddProduct = () => {
             if(data.acknowledged){
                 toast.success('Added your product successfully')
                 navigate('/dashboard/myproducts')
-                form.reset()
             }
         })
     }
