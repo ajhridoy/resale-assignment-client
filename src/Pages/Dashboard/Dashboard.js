@@ -5,8 +5,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
-
-  const { data: orders = [], refetch } = useQuery({
+  const { data: orders = [], refetch, isLoading } = useQuery({
     queryKey: ["bookings", user?.email],
     queryFn: () => fetch(url, {
         headers: {
@@ -15,6 +14,9 @@ const Dashboard = () => {
     })
     .then((res) => res.json()),
   });
+  if(isLoading){
+    return <div>Loading...</div>
+  }
   refetch()
   return (
     <div>

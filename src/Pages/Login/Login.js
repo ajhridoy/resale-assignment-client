@@ -29,9 +29,9 @@ const Login = () => {
             const user = userCredential.user;
             console.log(user)
             toast.success('LogIn Successfully')
-            form.reset()
             setLoginUserEmail(email)
-            navigate(from, {replace: true})
+            form.reset()
+            // navigate(from, {replace: true})
           })
           .catch((error) => {
             setError(error.message);

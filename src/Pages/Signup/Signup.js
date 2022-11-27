@@ -36,7 +36,6 @@ const Signup = () => {
 
       })
       form.reset()
-      navigate('/')
     })
     .catch((error) => {
        setError(error.message)

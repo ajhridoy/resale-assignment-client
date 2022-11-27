@@ -1,13 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import DeleteModal from '../../../SharedPages/DeleteModal/DeleteModal';
 
 const MyProducts = () => {
     const {user} = useContext(AuthContext)
-    const {data: myProducts = []} = useQuery({
+    const [deleteProduct, setDeleteProduct] = useState(null)
+    const {data: myProducts = [], refetch, isLoading} = useQuery({
         queryKey: ['products/email', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/products/email?email=${user?.email}`)
+        queryFn: () => fetch(`http://localhost:5000/products/email?email=${user?.email}`, {
+          headers: {
+            authorization: `bearer ${localStorage.getItem('resaleToken')}`
+          },
+        })
         .then(res => res.json())
     })
 
@@ -27,8 +33,28 @@ const MyProducts = () => {
         })
     }
 
-    const handleDelete = id => {
-        
+    const closeModal = () => {
+        setDeleteProduct(null)
+    }
+
+    const handleDelete = product => {
+      fetch(`http://localhost:5000/products/${product._id}`, {
+        method: 'DELETE',
+        headers: {
+          authorization: `bearer ${localStorage.getItem('resaleToken')}`
+        },
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.deletedCount > 0){
+          toast.success('Your product deleted successfully')
+          refetch()
+        }
+      })
+    }
+
+    if(isLoading){
+      return <div>Loading...</div>
     }
     return (
         <div>
@@ -63,13 +89,22 @@ const MyProducts = () => {
                     <button onClick={() => handleAddvertise(product)} className="btn btn-sm bg-green-400 hover:bg-green-500 text-black">Advertise</button>
                 </td>
                 <td>
-                <button onClick={handleDelete} className="btn btn-sm bg-red-400 hover:bg-red-500 text-black mr-2">Delete</button>
+                <label onClick={() => setDeleteProduct(product)} htmlFor="delete-modal" className="btn btn-sm bg-red-400 hover:bg-red-500 text-black mr-2">Delete</label>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {
+        deleteProduct && <DeleteModal
+        title={'Are you sure for delete'}
+        message={`If you delete ${deleteProduct.name} You can't get the data back`}
+        closeModal={closeModal}
+        deleteAction={handleDelete}
+        modalData={deleteProduct}
+        ></DeleteModal>
+      }
         </div>
     );
 };

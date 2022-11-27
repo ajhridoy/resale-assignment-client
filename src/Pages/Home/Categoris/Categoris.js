@@ -3,11 +3,14 @@ import React from 'react';
 import Category from './Category';
 
 const Categoris = () => {
-    const {data: categories = []} = useQuery({
+    const {data: categories = [], isLoading} = useQuery({
         queryKey: ['category'],
         queryFn: () => fetch('http://localhost:5000/categories')
         .then(res => res.json())
     })
+    if(isLoading){
+        return <div>Loading...</div>
+    }
     return (
         <div className='my-10'>
             <h2 className='text-4xl text-center font-bold mb-10'>Categories</h2>

@@ -7,12 +7,14 @@ import ProductCard from './ProductCard';
 const CategoryProduct = () => {
     const category = useLoaderData()
     const [bookingBrand, setBookingBrand] = useState(null)
-    const {data: products = []} = useQuery({
+    const {data: products = [], isLoading} = useQuery({
         queryKey: ['products', category.categoryName],
         queryFn: () => fetch(`http://localhost:5000/products?categoryName=${category.categoryName}`)
         .then(res => res.json())
     })
-    console.log(products)
+    if(isLoading){
+        return <div>Loading...</div>
+    }
     return (
         <div>
             <h2 className='text-3xl font-bold mt-8 text-center'>All Product of <span className='text-orange-600 uppercase'>{category.categoryName}</span></h2>

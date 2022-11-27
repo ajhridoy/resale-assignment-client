@@ -3,11 +3,14 @@ import React from 'react';
 import AdvCard from './AdvCard';
 
 const Advertise = () => {
-    const {data: advertise = []} = useQuery({
+    const {data: advertise = [], isLoading} = useQuery({
         queryKey: ['/products/available'],
         queryFn: () => fetch('http://localhost:5000/products/available')
         .then(res => res.json())
     })
+    if(isLoading){
+        return <div>Loading...</div>
+    }
     return (
         <div>
            {

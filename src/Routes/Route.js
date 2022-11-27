@@ -3,12 +3,15 @@ import DashboardLaouts from "../Layouts/DashboardLaouts/DashboardLaouts";
 import Main from "../Layouts/Main";
 import Blog from "../Pages/Blog/Blog";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
+import AllByers from "../Pages/Dashboard/AllByers/AllByers";
+import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
 import CategoryProduct from "../Pages/Home/Categoris/CategoryProduct";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
+import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import SellerRoute from "./SellerRoute/SellerRoute";
 
@@ -55,6 +58,14 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/myproducts',
                 element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+            {
+                path: '/dashboard/allbyers',
+                element: <AdminRoute><AllByers></AllByers></AdminRoute>
+            },
+            {
+                path: '/dashboard/allsellers',
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
         ]
     }
