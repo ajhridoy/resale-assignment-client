@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { DayPicker } from 'react-day-picker';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
@@ -9,9 +8,11 @@ const AddProduct = () => {
     const {user} = useContext(AuthContext)
     const imgHostkey = process.env.REACT_APP_IMG_BB_KEY
     const [image, setImage] = useState('')
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
     const handleProductAdd = event => {
         event.preventDefault()
+        setLoading(true)
         const form = event.target;
         const name = form.name.value;
         const img = form.img.files[0];
@@ -65,6 +66,10 @@ const AddProduct = () => {
                 navigate('/dashboard/myproducts')
             }
         })
+    }
+    setLoading(false)
+    if(loading){
+        return <div>Loading...</div>
     }
     return (
         <div className='mx-4 p-4'>

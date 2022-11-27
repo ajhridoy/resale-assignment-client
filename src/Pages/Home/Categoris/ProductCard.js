@@ -1,8 +1,24 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const ProductCard = ({product, setBookingBrand}) => {
     const {condition, decs, img, location, name, originalPrice, postTime, resalePrice, sellerName} = product
     // const realTime = parseFloat(postTime)
+    const handleReport = product => {
+      fetch(`http://localhost:5000/product/${product._id}`, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(product)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.modifiedCount > 0){
+          toast.success('Your report send to Admin')
+        }
+      })
+    }
     return (
         <div className="card lg:card-side bg-base-200 shadow-xl mx-8 md:mx-20 my-10">
   <figure className='lg:w-2/5'><img className='w-full md:h-96' src={img} alt="Album"/></figure>
@@ -19,6 +35,7 @@ const ProductCard = ({product, setBookingBrand}) => {
     <p className='font-medium'>Seller Name: <span className='text-xl font-bold'>{sellerName}</span></p>
     <div className="card-actions justify-end">
       <label onClick={() => setBookingBrand(product)} htmlFor="booking-modal" className="btn bg-green-400 hover:bg-green-500 text-black">Book Now</label>
+      <button onClick={() => handleReport(product)} className='btn btn-outline'>Report This Item</button>
     </div>
   </div>
 </div>

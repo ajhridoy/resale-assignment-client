@@ -1,19 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useToken from '../../hooks/useToken';
 
 const Signup = () => {
-  const {createUser, updateUserProfile} = useContext(AuthContext)
+  const {createUser, updateUserProfile, setLoading} = useContext(AuthContext)
   const [error, setError] = useState('')
   const [createUserEmail, setCreateUserEmail] = useState('')
   const [token] = useToken(createUserEmail);
   const navigate = useNavigate()
   
-  if(token){
-    navigate('/')
-  }
+  useEffect(() => {
+    if(token){
+      navigate('/')
+    }
+  }, [token])
 
   const handleSignup = event => {
     event.preventDefault();
@@ -31,6 +33,7 @@ const Signup = () => {
       toast.success('User Sign Up Successfully')
       updateUserProfile(name)
       .then(() => {
+        setLoading(false)
         savedUserDb(name, email, role)
       }).catch((error) => {
 

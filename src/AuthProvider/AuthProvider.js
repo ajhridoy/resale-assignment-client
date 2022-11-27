@@ -6,41 +6,41 @@ export const AuthContext = createContext()
 const auth = getAuth(app)
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
-    const [loading, isLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     const googleProvider = new GoogleAuthProvider();
 
     const createUser = (email, password) => {
-        isLoading(true)
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const updateUserProfile = (name) => {
-        isLoading(true)
+        setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name})
     }
 
     const loginUser = (email, password) => {
-        isLoading(true)
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
-            isLoading(false)
+            setLoading(false)
         })
         return () => unsubscribe()
     }, [])
 
     const loginWithGoogle = () => {
-        isLoading(true)
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
 
     const logOut = () => {
-        isLoading(true)
+        setLoading(true)
         localStorage.removeItem('resaleToken')
         return signOut(auth)
     }
@@ -48,6 +48,7 @@ const AuthProvider = ({children}) => {
     const authInfo = {
         user,
         loading,
+        setLoading,
         createUser,
         updateUserProfile,
         loginUser,

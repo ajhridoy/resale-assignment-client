@@ -33,7 +33,7 @@ const DashboardLaouts = () => {
               <Link to='/dashboard/allsellers'>All sellers</Link>
             </li>
             <li>
-              <Link>Reported Items</Link>
+              <Link to='/dashboard/reportedItems'>Reported Items</Link>
             </li>
                 </>
             }
