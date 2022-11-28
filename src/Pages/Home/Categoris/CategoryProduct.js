@@ -9,7 +9,7 @@ const CategoryProduct = () => {
     const [bookingBrand, setBookingBrand] = useState(null)
     const {data: products = [], isLoading} = useQuery({
         queryKey: ['products', category.categoryName],
-        queryFn: () => fetch(`http://localhost:5000/products?categoryName=${category.categoryName}`)
+        queryFn: () => fetch(`https://resale-assignment-server.vercel.app/products?categoryName=${category.categoryName}`)
         .then(res => res.json())
     })
     if(isLoading){

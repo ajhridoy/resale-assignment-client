@@ -5,7 +5,7 @@ const ProductCard = ({product, setBookingBrand}) => {
     const {condition, decs, img, location, name, originalPrice, postTime, resalePrice, sellerName} = product
     // const realTime = parseFloat(postTime)
     const handleReport = product => {
-      fetch(`http://localhost:5000/product/${product._id}`, {
+      fetch(`https://resale-assignment-server.vercel.app/product/${product._id}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json'

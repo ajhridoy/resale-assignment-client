@@ -9,7 +9,7 @@ const MyProducts = () => {
     const [deleteProduct, setDeleteProduct] = useState(null)
     const {data: myProducts = [], refetch, isLoading} = useQuery({
         queryKey: ['products/email', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/products/email?email=${user?.email}`, {
+        queryFn: () => fetch(`https://resale-assignment-server.vercel.app/products/email?email=${user?.email}`, {
           headers: {
             authorization: `bearer ${localStorage.getItem('resaleToken')}`
           },
@@ -18,7 +18,7 @@ const MyProducts = () => {
     })
 
     const handleAddvertise = product => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://resale-assignment-server.vercel.app/products/${product._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -38,7 +38,7 @@ const MyProducts = () => {
     }
 
     const handleDelete = product => {
-      fetch(`http://localhost:5000/products/${product._id}`, {
+      fetch(`https://resale-assignment-server.vercel.app/products/${product._id}`, {
         method: 'DELETE',
         headers: {
           authorization: `bearer ${localStorage.getItem('resaleToken')}`

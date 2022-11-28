@@ -13,7 +13,7 @@ const CheackoutForm = ({bookingData}) => {
 
     useEffect(() => {
       // Create PaymentIntent as soon as the page loads
-      fetch("http://localhost:5000/create-payment-intent", {
+      fetch("https://resale-assignment-server.vercel.app/create-payment-intent", {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -73,7 +73,7 @@ const CheackoutForm = ({bookingData}) => {
             bookingId: _id,
             brandName
           }
-          fetch('http://localhost:5000/payments', {
+          fetch('https://resale-assignment-server.vercel.app/payments', {
             method: 'POST',
             headers: {
               'content-type': 'application/json',

@@ -6,6 +6,7 @@ import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import AllByers from "../Pages/Dashboard/AllByers/AllByers";
 import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
 import ReportItems from "../Pages/Dashboard/ReportItems/ReportItems";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
@@ -15,6 +16,7 @@ import Login from "../Pages/Login/Login";
 import Payments from "../Pages/Payments/Payments";
 import Signup from "../Pages/Signup/Signup";
 import AdminRoute from "./AdminRoute/AdminRoute";
+import BuyerRoute from "./BuyerRoute/BuyerRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import SellerRoute from "./SellerRoute/SellerRoute";
 
@@ -31,7 +33,7 @@ export const router = createBrowserRouter([
             {
                 path: '/category/:id',
                 element: <PrivateRoute><CategoryProduct></CategoryProduct></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({params}) => fetch(`https://resale-assignment-server.vercel.app/categories/${params.id}`)
             },
             {
                 path: '/login',
@@ -57,6 +59,10 @@ export const router = createBrowserRouter([
                 element: <Dashboard></Dashboard>
             },
             {
+                path: '/dashboard/myorders',
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
+            },
+            {
                 path: '/dashboard/addProduct',
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
@@ -78,8 +84,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/payments/:id',
-                element: <Payments></Payments>,
-                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                element: <BuyerRoute><Payments></Payments></BuyerRoute>,
+                loader: ({params}) => fetch(`https://resale-assignment-server.vercel.app/bookings/${params.id}`)
             },
         ]
     }

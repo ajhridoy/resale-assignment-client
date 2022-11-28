@@ -7,7 +7,7 @@ const ReportItems = () => {
     const [deleteReportProduct, setDeleteReportProduct] = useState(null)
     const {data: reportedItems = [], refetch, isLoading} = useQuery({
         queryKey: ['/products/report'],
-        queryFn: () => fetch('http://localhost:5000/products/report', {
+        queryFn: () => fetch('https://resale-assignment-server.vercel.app/products/report', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('resaleToken')}`
             },
@@ -20,7 +20,7 @@ const ReportItems = () => {
     }
 
     const handleDelete = report => {
-      fetch(`http://localhost:5000/product/${report._id}`, {
+      fetch(`https://resale-assignment-server.vercel.app/product/${report._id}`, {
         method: 'DELETE',
         headers: {
           authorization: `bearer ${localStorage.getItem('resaleToken')}`

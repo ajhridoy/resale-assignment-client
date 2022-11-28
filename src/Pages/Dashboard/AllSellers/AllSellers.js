@@ -7,7 +7,7 @@ const AllSellers = () => {
     const [deleteSeller, setDeleteSeller] = useState(null)
     const {data: sellers = [], isLoading, refetch} = useQuery({
         queryKey: ['/users/buyers'],
-        queryFn: () => fetch('http://localhost:5000/users/sellers', {
+        queryFn: () => fetch('https://resale-assignment-server.vercel.app/users/sellers', {
             headers: {
                 authorization: `bearer ${localStorage.getItem('resaleToken')}`
               },
@@ -20,7 +20,7 @@ const AllSellers = () => {
     }
 
     const handleDelete = seller => {
-      fetch(`http://localhost:5000/users/${seller._id}`, {
+      fetch(`https://resale-assignment-server.vercel.app/users/${seller._id}`, {
         method: 'DELETE',
         headers: {
           authorization: `bearer ${localStorage.getItem('resaleToken')}`

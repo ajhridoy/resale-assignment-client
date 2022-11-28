@@ -5,7 +5,7 @@ import AdvCard from './AdvCard';
 const Advertise = () => {
     const {data: advertise = [], isLoading} = useQuery({
         queryKey: ['/products/available'],
-        queryFn: () => fetch('http://localhost:5000/products/available')
+        queryFn: () => fetch('https://resale-assignment-server.vercel.app/products/available')
         .then(res => res.json())
     })
     if(isLoading){
