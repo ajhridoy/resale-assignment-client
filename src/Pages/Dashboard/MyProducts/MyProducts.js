@@ -85,8 +85,15 @@ const MyProducts = () => {
                 <td>{product.name}</td>
                 <td>${product.resalePrice}</td>
                 <td>
-                    <p className='font-bold'>Avaliable</p>
+                  {
+                    product.paid === false && <div>
+                      <p className='font-bold'>Avaliable</p>
                     <button onClick={() => handleAddvertise(product)} className="btn btn-sm bg-green-400 hover:bg-green-500 text-black">Advertise</button>
+                    </div>
+                  }
+                  {
+                    product.paid === true && <p className='font-bold text-green-600'>Sold</p>
+                  }
                 </td>
                 <td>
                 <label onClick={() => setDeleteProduct(product)} htmlFor="delete-modal" className="btn btn-sm bg-red-400 hover:bg-red-500 text-black mr-2">Delete</label>

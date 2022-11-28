@@ -12,6 +12,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import CategoryProduct from "../Pages/Home/Categoris/CategoryProduct";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
+import Payments from "../Pages/Payments/Payments";
 import Signup from "../Pages/Signup/Signup";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
@@ -74,6 +75,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/reportedItems',
                 element: <AdminRoute><ReportItems></ReportItems></AdminRoute>
+            },
+            {
+                path: '/dashboard/payments/:id',
+                element: <Payments></Payments>,
+                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
             },
         ]
     }

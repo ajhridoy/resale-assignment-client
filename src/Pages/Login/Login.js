@@ -31,7 +31,6 @@ const Login = () => {
             toast.success('LogIn Successfully')
             setLoginUserEmail(email)
             form.reset()
-            // navigate(from, {replace: true})
           })
           .catch((error) => {
             setError(error.message);
