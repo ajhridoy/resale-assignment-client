@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Loading from '../../../SharedPages/Loading/Loading';
 import AdvCard from './AdvCard';
 
 const Advertise = () => {
@@ -9,7 +10,7 @@ const Advertise = () => {
         .then(res => res.json())
     })
     if(isLoading){
-        return <div>Loading...</div>
+        return <Loading></Loading>
     }
     return (
         <div>

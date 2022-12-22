@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import Loading from '../../../SharedPages/Loading/Loading';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const MyOrders = () => {
     .then((res) => res.json()),
   });
   if(isLoading){
-    return <div>Loading...</div>
+    return <Loading></Loading>
   }
   refetch()
     return (

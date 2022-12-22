@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import DeleteModal from '../../../SharedPages/DeleteModal/DeleteModal';
+import Loading from '../../../SharedPages/Loading/Loading';
 
 const MyProducts = () => {
     const {user} = useContext(AuthContext)
@@ -54,7 +55,7 @@ const MyProducts = () => {
     }
 
     if(isLoading){
-      return <div>Loading...</div>
+      return <Loading></Loading>
     }
     return (
         <div>

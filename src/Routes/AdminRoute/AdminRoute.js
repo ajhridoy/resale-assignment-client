@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useAdmin from '../../hooks/useAdmin';
+import Loading from '../../SharedPages/Loading/Loading';
 
 const AdminRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext)
@@ -9,7 +10,7 @@ const AdminRoute = ({children}) => {
     const location = useLocation()
 
     if(loading || adminLoading){
-        return <div>Loading...</div>
+        return <Loading></Loading>
     }
 
     if(user && isAdmin){

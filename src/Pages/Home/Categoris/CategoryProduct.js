@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Loading from '../../../SharedPages/Loading/Loading';
 import BookingModal from '../BookingModal/BookingModal';
 import ProductCard from './ProductCard';
 
@@ -13,7 +14,7 @@ const CategoryProduct = () => {
         .then(res => res.json())
     })
     if(isLoading){
-        return <div>Loading...</div>
+        return <Loading></Loading>
     }
     return (
         <div>

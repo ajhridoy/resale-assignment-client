@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import DeleteModal from '../../../SharedPages/DeleteModal/DeleteModal';
+import Loading from '../../../SharedPages/Loading/Loading';
 
 const ReportItems = () => {
     const [deleteReportProduct, setDeleteReportProduct] = useState(null)
@@ -36,7 +37,7 @@ const ReportItems = () => {
     }
 
     if(isLoading){
-      return <div>Loading...</div>
+      return <Loading></Loading>
     }
     return (
         <div>
