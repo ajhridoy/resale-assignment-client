@@ -21,8 +21,12 @@ const ProductCard = ({product, setBookingBrand}) => {
     }
     return (
         <div className="card lg:card-side bg-base-200 shadow-xl mx-8 md:mx-20 my-10">
-  <figure className='lg:w-2/5'><img className='w-full md:h-96' src={img} alt="Album"/></figure>
-  <div className="card-body">
+  <figure className='lg:w-2/5'><img className='w-full md:h-96' src={img} alt="Album" data-aos="zoom-in"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1000"/></figure>
+  <div className="card-body" data-aos="fade-up"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1000">
     <div className='flex justify-between'>
     <div><h2 className="text-2xl font-bold">{name}</h2></div>
     <div><p className='font-bold'>Time: {postTime}</p></div>

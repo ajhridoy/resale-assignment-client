@@ -3,7 +3,9 @@ import React from 'react';
 const AdvCard = ({product}) => {
     const {img, name, categoryName} = product
     return (
-        <div className="card h-96 card-compact bg-base-100 shadow-xl">
+        <div className="card h-96 card-compact bg-base-100 shadow-xl" data-aos="zoom-out-right"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="1500">
   <figure className='h-2/3'><img className='w-full' src={img} alt="Shoes" /></figure>
   <div className="card-body">
     <h2 className="card-title">{name}</h2>

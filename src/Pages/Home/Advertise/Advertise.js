@@ -17,7 +17,9 @@ const Advertise = () => {
            {
             advertise.length > 0 &&  
             <div className='my-15 mx-12'>
-              <h2 className='font-bold text-3xl mb-7 text-center'>Advertise Product</h2>
+              <h2 className='font-bold text-3xl mb-7 text-center' data-aos="zoom-in"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1500">Advertise Product</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4'>
                 {
                     advertise.map(product => <AdvCard
